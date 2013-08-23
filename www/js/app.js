@@ -8,8 +8,15 @@ function getParameterByName(name) {
 }
 
 function onDocumentLoad() {
-    $('header h1').text(viewer.api.getTitle());
-    $('header h2').text(viewer.api.getDescription());
+    var title = viewer.api.getTitle();
+    var related_url = viewer.api.getRelatedArticle();
+
+    $('header h1').text(title);
+
+    if (related_url) {
+        $('header h2 a').text(viewer.api.getiRelatedArticle());
+        $('header h2').show();
+    }
 }
 
 $(function() { 
