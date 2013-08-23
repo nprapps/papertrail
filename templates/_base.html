@@ -47,7 +47,7 @@
     {% block extra_head %}
     {% endblock extra_head %}
 </head>
-<body>
+<body class="{% block body_class %}{% endblock body_class %}">
     <a class="sr-only" href="#content">Skip To Content</a>
 
     {% block outer_content %}
