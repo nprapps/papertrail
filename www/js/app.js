@@ -23,10 +23,9 @@ function onDocumentLoad() {
     var fullscreen_url = APP_CONFIG.S3_BASE_URL + '/?doc=' + slug;
 
     $('header h1').text(title);
-    $('title').text(page_title);
 
     if (related_url && !embed) {
-        $('header h2 a').text(viewer.api.getiRelatedArticle());
+        $('header h2 a').text(viewer.api.getRelatedArticle());
         $('header h2').show();
     }
 
@@ -39,6 +38,8 @@ function onDocumentLoad() {
     });
 
     $('.social-links').html(JST.share(context));
+    
+    document.title = page_title;
 }
 
 $(function() { 
