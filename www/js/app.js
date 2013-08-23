@@ -15,8 +15,9 @@ function onDocumentLoad() {
     var related_url = viewer.api.getRelatedArticle();
     var fullscreen_url = APP_CONFIG.S3_BASE_URL + '/?doc=' + slug;
 
-    $('header h1').text(title);
-    $('title').text(page_title);
+    // NB: .html, not .text so encoded chars render correctly
+    $('header h1').html(title);
+    $('title').html(page_title);
 
     if (related_url && !embed) {
         $('header h2 a').text(viewer.api.getiRelatedArticle());
