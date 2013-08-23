@@ -7,12 +7,24 @@ function getParameterByName(name) {
 
 $(function() { 
     var slug = getParameterByName('doc');
+    var embed = getParameterByName('embed') == 'true' ? true : false;
+    var width = null;
+    var height = null;
+    var sidebar = true;
+
+    if (embed) {
+        width = '100%';
+        height = 300; 
+        sidebar = false;
+    } else if (window.innerWidth <= 420) {
+        docsidebar = false;
+    }
 
     DV.load('//www.documentcloud.org/documents/' + slug 
 + '.js', {
-        //width: 300,
-        //height: 300,
+        width: width,
+        height: height,
+        sidebar: sidebar,
         container: '#DV-viewer'
     });
-   
 });
