@@ -186,10 +186,18 @@ header {
         }
         h2 { display: block; }
     }
+    iframe { border: none; }
     #content { margin: 0 30px; }
     #generate { margin-bottom: 33px; }
-
-    .results { display: none; }
+    span.help-block {
+        display: inline;
+        margin-left: 11px;
+        font-size: 90%;
+    }
+    .results { 
+        display: none;
+        &.form-group { margin-bottom: 33px; }
+    }
 }
 
 
