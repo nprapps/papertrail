@@ -33,7 +33,7 @@ $(function() {
 
     if (embed) {
         width = '100%';
-        height = 300; 
+        height = 450; 
         sidebar = false;
         $('body').addClass('embed');
     } else {
