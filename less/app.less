@@ -131,7 +131,11 @@ header {
 
 // Content
 #content { 
-    .DV-views div span { box-sizing: content-box; }
+    .DV-views div span { 
+        -moz-box-sizing: content-box;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+    }
     .DV-header .DV-fullscreen { display: none; }
     .DV-footer { display: none; }
     .DV-docViewer-Container { bottom: 0; }
