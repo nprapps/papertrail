@@ -28,4 +28,6 @@
 
 {% block extra_foot_js %}
 {{ JS.push('js/generate.js') }}
+{{ JS.push('js/templates.js') }}
+{{ JS.render('js/generate-footer.min.js') }}
 {% endblock extra_foot_js %}
