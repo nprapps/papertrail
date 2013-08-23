@@ -11,17 +11,27 @@ function getParameterByName(name) {
 
 function onDocumentLoad() {
     var title = viewer.api.getTitle();
+    var page_title = title + ' - Document Viewer : NPR';
     var related_url = viewer.api.getRelatedArticle();
+    var fullscreen_url = APP_CONFIG.S3_BASE_URL + '/?doc=' + slug;
 
     $('header h1').text(title);
-    $('title').text(title + ' - Document Viewer : NPR');
+    $('title').text(page_title);
 
     if (related_url && !embed) {
         $('header h2 a').text(viewer.api.getiRelatedArticle());
         $('header h2').show();
     }
 
-    $('#fullscreen-link a').attr({ href: APP_CONFIG.S3_BASE_URL + '/?doc=' + slug });
+    $('#fullscreen-link a').attr({ href: fullscreen_url });
+
+    var context = $.extend(APP_CONFIG, {
+        url: fullscreen_url,
+        text: title,
+        title: page_title
+    });
+
+    $('.social-links').html(JST.share(context));
 }
 
 $(function() { 
