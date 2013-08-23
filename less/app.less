@@ -131,7 +131,11 @@ header {
 
 // Content
 #content { 
-    .DV-views div span { box-sizing: content-box; }
+    .DV-views div span { 
+        -moz-box-sizing: content-box;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+    }
     .DV-header .DV-fullscreen { display: none; }
     .DV-footer { display: none; }
     .DV-docViewer-Container { bottom: 0; }
@@ -186,10 +190,18 @@ header {
         }
         h2 { display: block; }
     }
+    iframe { border: none; }
     #content { margin: 0 30px; }
-    #generate { margin-bottom: 33px; }
-
-    .results { display: none; }
+    #generate { margin-bottom: 44px; }
+    span.help-block {
+        display: inline;
+        margin-left: 11px;
+        font-size: 90%;
+    }
+    .results { 
+        display: none;
+        &.form-group { margin-bottom: 33px; }
+    }
 }
 
 
