@@ -1,3 +1,4 @@
+var slug = null;
 var embed = null;
 var viewer = null;
 
@@ -19,10 +20,12 @@ function onDocumentLoad() {
         $('header h2 a').text(viewer.api.getiRelatedArticle());
         $('header h2').show();
     }
+
+    $('#fullscreen-link a').attr({ href: APP_CONFIG.S3_BASE_URL + '/?doc=' + slug });
 }
 
 $(function() { 
-    var slug = getParameterByName('doc');
+    slug = getParameterByName('doc');
     embed = getParameterByName('embed') == 'true' ? true : false;
     var width = null;
     var height = null;
@@ -49,5 +52,4 @@ $(function() {
         container: '#DV-viewer',
         afterLoad: onDocumentLoad 
     });
-
 });
