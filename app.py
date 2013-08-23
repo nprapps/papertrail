@@ -21,6 +21,13 @@ def index():
     """
     return render_template('index.html', **make_context())
 
+@app.route('/generate.html')
+def generate():
+    """
+    Generate embed code.
+    """
+    return render_template('generate.html', **make_context())
+
 @app.route('/widget.html')
 def widget():
     """

@@ -1,0 +1,31 @@
+{% extends '_base.html' %}
+
+{% block header_content %}
+<header>
+    <h1>Generate embed</h1>
+</header>
+{% endblock %}
+
+{% block wide_content %}
+<div class="row">
+  <div class="col-md-12">
+        <form role="form">
+            <div class="form-group">
+                <label for="doc-url">DocumentCloud URL</label>
+                <input type="url" name="doc-url" class="form-control" placeholder="https://www.documentcloud.org/documents/778137-lipo-charger-basic-v10.html" />
+            </div>
+
+            <div class="form-group">
+                <label for="embed-code">Embed code</label>
+                <textarea name="embed-code" class="form-control" rows="3" readonly="readonly"></textarea>
+            </div>
+            
+            <button id="generate" type="button" class="btn btn-default">Generate embed code</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_foot_js %}
+{{ JS.push('js/generate.js') }}
+{% endblock extra_foot_js %}
