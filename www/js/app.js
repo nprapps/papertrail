@@ -30,8 +30,8 @@ $(function() {
         width = '100%';
         height = 300; 
         sidebar = false;
-    } else if (window.innerWidth <= 420) {
-        docsidebar = false;
+    } else if (window.innerWidth <= 480) {
+        sidebar = false;
     }
 
 

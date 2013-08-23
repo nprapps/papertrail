@@ -110,38 +110,18 @@ header {
 	padding: 22px 30px;
 	
 	h1 { 
-	    display: inline;
+	    float: left;
 	    font-size: 24px;
+	    margin: 0;
 	}
 	h2 { 
 	    color: #666; 
 	    margin: 0 0 0 11px;
-	    display: inline;
 	    font-size: 14px;
+	    float: left;
         display: none;
 	}
-}
-
-
-// Cube ad
-.adwrapper { 
-    zoom: 1; 
-    padding: 0 0 12px 0;
-
-    .sponsor300 {
-        overflow: hidden;
-        width: 300px;
-        margin: 0 auto;
-    }
-    p { 
-        margin: 6px 0 0 0; 
-        font-size: 11px; 
-        color: #999;
-        
-        &.left { float: left; }
-        &.right { float: right; }
-        a { color: #6d8ac4; }
-    }
+	&:after { visibility: hidden; display: block; content: ""; clear: both; height: 0; }
 }
 
 
@@ -158,12 +138,11 @@ header {
 @media (max-width: 767px) {
     header { 
         padding-left: 20px;
-        h1 {
-            display: block;
-            margin-bottom: 11px;
-        }
+
+        h1 { float: none; }
         h2 { 
-            display: block;
+            float: none;
+            margin-top: 11px;
             margin-left: 0;
         }
     }
@@ -180,8 +159,10 @@ header {
 
 	    h1 { 
 	        font-size: 20px;
-	        margin-bottom: 6px;
 	    }
-	    h2 { font-size: 12px; }
+	    h2 { 
+	        margin-top: 6px;
+	        font-size: 12px;
+	    }
 	}
 }
