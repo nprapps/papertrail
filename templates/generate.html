@@ -1,14 +1,17 @@
 {% extends '_base.html' %}
 
+{% block body_class %}generator{% endblock body_class %}
+
 {% block header_content %}
 <header>
-    <h1>Generate embed</h1>
+    <h1>Paper Trail</h1>
+    <h2>A Document Cloud embed generator</h2>
 </header>
 {% endblock %}
 
 {% block wide_content %}
 <div class="row">
-  <div class="col-md-12">
+    <div class="col-md-12">
         <form role="form">
             <div class="form-group">
                 <label for="doc-url">DocumentCloud URL</label>
@@ -19,8 +22,8 @@
                 <label for="embed-code">Embed code</label>
                 <textarea name="embed-code" class="form-control" rows="3" readonly="readonly"></textarea>
             </div>
-            
-            <button id="generate" type="button" class="btn btn-default">Generate embed code</button>
+
+            <button id="generate" type="button" class="btn btn-blue">Generate embed code</button>
         </form>
     </div>
 </div>
