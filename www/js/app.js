@@ -9,15 +9,21 @@ function getParameterByName(name) {
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
 
+// Via: http://stackoverflow.com/a/1912522
+function htmlDecode(input) {
+    var e = document.createElement('div');
+    e.innerHTML = input;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+}
+
 function onDocumentLoad() {
-    var title = viewer.api.getTitle();
+    var title = htmlDecode(viewer.api.getTitle());
     var page_title = title + ' - Document Viewer : NPR';
     var related_url = viewer.api.getRelatedArticle();
     var fullscreen_url = APP_CONFIG.S3_BASE_URL + '/?doc=' + slug;
 
-    // NB: .html, not .text so encoded chars render correctly
-    $('header h1').html(title);
-    $('title').html(page_title);
+    $('header h1').text(title);
+    $('title').text(page_title);
 
     if (related_url && !embed) {
         $('header h2 a').text(viewer.api.getiRelatedArticle());
@@ -28,7 +34,7 @@ function onDocumentLoad() {
 
     var context = $.extend(APP_CONFIG, {
         url: fullscreen_url,
-        text: title,
+        text: 'Document: ' + title,
         title: page_title
     });
 
