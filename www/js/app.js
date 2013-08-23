@@ -12,6 +12,7 @@ function onDocumentLoad() {
     var related_url = viewer.api.getRelatedArticle();
 
     $('header h1').text(title);
+    $('title').text(title + ' - Document Viewer : NPR');
 
     if (related_url) {
         $('header h2 a').text(viewer.api.getiRelatedArticle());
