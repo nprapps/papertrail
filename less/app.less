@@ -150,103 +150,37 @@ header {
 } 
 
 
-// Footer
-footer {
-	padding: 0 15px 10px 15px;
-	font-size: 10px;
-	border-top: 2px solid #e0e0e0;
-
-	ul { 
-	    list-style: none; 
-	    margin: 0; 
-	    padding: 0;
-	}
-	li, p { float: left; }
-	a, a:link, a:visited { 
-	    color: #6d8ac4; 
-	    font-weight: bold;
-	}
-	a:hover, a:active { color: #bccae5; }
-
-	.primary { 
-		float: left; 
-		height: 52px; 
-		font-size: 12px; 
-		text-transform: lowercase;
-
-		img { 
-		    width: 66px; 
-		    margin-top: -2px;
-		}
-		li { 
-		    margin-left: 31px; 
-		    line-height: 52px; 
-		    text-transform: lowercase;
-		    
-		    &:first-child { 
-		        margin-left: 0;
-		        width: 66px;
-		    }
-		}
-	}
-	.secondary { 
-		height: 52px; 
-
-		p { 
-		    float: right; 
-		    margin-left: 30px; 
-		    line-height: 52px; 
-		    font-size: 12px; 
-		    float: right; 
-		    color: #999;
-		}
-		ul { 
-		    float: right;
-		    margin-left: 30px;
-		}
-		li { 
-		    line-height: 52px; 
-		    font-size: 12px; 
-		    margin-left: 15px;
-		}
-		a { 
-		    color: #999; 
-		    font-weight: normal;
-		}
-	}
-}
-
-
 // Media queries
 @media (max-width: 979px) {
 	nav .site-links-2 { display: none; }
-	footer {
-		.primary { float: none; }
-		.secondary ul, .secondary p { margin-left: 0; float: left; }
-	}
 }
 @media (max-width: 767px) {
-	nav, header, footer { margin-left: -20px; margin-right: -20px; }
+    header { 
+        padding-left: 20px;
+        h1 {
+            display: block;
+            margin-bottom: 11px;
+        }
+        h2 { 
+            display: block;
+            margin-left: 0;
+        }
+    }
 	nav .site-links { margin-left: 20px; }
-	footer { 
-		.primary { display: none; }
-		.secondary p { float: left; font-size: 10px; color: #bccae5; }
-		.secondary ul { float: right; }
-		.secondary li { font-size: 10px; text-transform: none; }
-		.secondary a { color: #bccae5; }
-	}
 }
 @media (max-width: 480px) {
-	section.the-goods { margin-top: 33px; }
-	h1 { font-size: 26px; }
-	#story-meta p { font-size: 11px; }
 	nav .site-links {
 		li { display: none; }
 		.npr { display: block; }
 	}
 	header {
-		padding: 33px 20px;
-		h1 { font-size: 36px; }
+	    padding-top: 11px;
+	    padding-bottom: 11px;
+
+	    h1 { 
+	        font-size: 20px;
+	        margin-bottom: 6px;
+	    }
+	    h2 { font-size: 12px; }
 	}
-	footer { border-top: 1px solid #CCC; margin-top: 24px; }
 }
