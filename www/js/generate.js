@@ -24,5 +24,7 @@ $('#generate').click(function() {
     $('textarea[name="embed-code"]').val(iframe);
 
     $('.results').show();
+
+    $('#iframe-example').html(iframe);
 });
 
