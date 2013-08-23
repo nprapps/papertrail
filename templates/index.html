@@ -25,4 +25,6 @@
 
 {% block extra_foot_js %}
 {{ JS.push('js/app.js') }}
+{{ JS.push('js/templates.js') }}
+{{ JS.render('js/app-footer.min.js') }}
 {% endblock extra_foot_js %}
