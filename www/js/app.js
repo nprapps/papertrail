@@ -1,8 +1,15 @@
+var viewer = null;
+
 function getParameterByName(name) {
     name = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
         results = regex.exec(location.search);
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+function onDocumentLoad() {
+    $('header h1').text(viewer.api.getTitle());
+    $('header h2').text(viewer.api.getDescription());
 }
 
 $(function() { 
@@ -20,11 +27,14 @@ $(function() {
         docsidebar = false;
     }
 
-    DV.load('//www.documentcloud.org/documents/' + slug 
+
+    viewer = DV.load('//www.documentcloud.org/documents/' + slug 
 + '.js', {
         width: width,
         height: height,
         sidebar: sidebar,
-        container: '#DV-viewer'
+        container: '#DV-viewer',
+        afterLoad: onDocumentLoad 
     });
+
 });
