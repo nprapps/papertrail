@@ -11,5 +11,7 @@ $('#generate').click(function() {
 
     $('input[name="fullscreen-url"]').val(fullscreen_url);
     $('textarea[name="embed-code"]').val(iframe);
+
+    $('.results').show();
 });
 
