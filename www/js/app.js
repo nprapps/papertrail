@@ -1,3 +1,4 @@
+var embed = null;
 var viewer = null;
 
 function getParameterByName(name) {
@@ -14,7 +15,7 @@ function onDocumentLoad() {
     $('header h1').text(title);
     $('title').text(title + ' - Document Viewer : NPR');
 
-    if (related_url) {
+    if (related_url && !embed) {
         $('header h2 a').text(viewer.api.getiRelatedArticle());
         $('header h2').show();
     }
@@ -22,7 +23,7 @@ function onDocumentLoad() {
 
 $(function() { 
     var slug = getParameterByName('doc');
-    var embed = getParameterByName('embed') == 'true' ? true : false;
+    embed = getParameterByName('embed') == 'true' ? true : false;
     var width = null;
     var height = null;
     var sidebar = true;
@@ -31,10 +32,14 @@ $(function() {
         width = '100%';
         height = 300; 
         sidebar = false;
-    } else if (window.innerWidth <= 480) {
-        sidebar = false;
+        $('body').addClass('embed');
+    } else {
+        $('body').addClass('fullscreen');
     }
 
+    if (window.innerWidth <= 480) {
+        sidebar = false;
+    }
 
     viewer = DV.load('//www.documentcloud.org/documents/' + slug 
 + '.js', {
