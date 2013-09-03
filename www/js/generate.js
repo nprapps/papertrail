@@ -1,3 +1,11 @@
+$('.example').click(function() {
+    $('input[name="doc-url"]').val($(this).attr('href'));
+
+    $('#generate').click();
+
+    return false;
+});
+
 $('#generate').click(function() {
     var url = $('input[name="doc-url"]').val();
 
