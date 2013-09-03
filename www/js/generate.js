@@ -15,8 +15,8 @@ $('#generate').click(function() {
         return;
     }
 
-    fullscreen_url = APP_CONFIG.S3_BASE_URL + '/?doc=' + slug;
-    embed_url = APP_CONFIG.S3_BASE_URL + '/?embed=true&doc=' + slug;
+    fullscreen_url = APP_CONFIG.S3_BASE_URL + '/document.html?id=' + slug;
+    embed_url = APP_CONFIG.S3_BASE_URL + '/document.html?embed=true&id=' + slug;
 
     var iframe = JST.embed({ url: embed_url });
 

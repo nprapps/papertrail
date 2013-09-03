@@ -18,7 +18,7 @@ PROJECT_NAME = 'Document Viewer'
 
 # Project name in urls
 # Use dashes, not underscores!
-PROJECT_SLUG = 'papertrail'
+PROJECT_SLUG = 'documents'
 
 # The name of the repository containing the source
 REPOSITORY_NAME = 'papertrail'

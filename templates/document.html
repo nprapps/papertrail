@@ -1,0 +1,29 @@
+{% extends '_base.html' %}
+
+{% block extra_head %}
+<base target="_top">
+{% endblock extra_head %}
+
+{% block header_content %}
+<header>
+    <h1>Loading...</h1>
+    <h2>Related story: <a href="">Link Goes Here</a></h2>
+</header>
+{% endblock %}
+
+{% block wide_content %}
+
+<div id="DV-viewer" class="DV-container"></div>
+<script src="//s3.amazonaws.com/s3.documentcloud.org/viewer/loader.js"></script>
+
+<div id="fullscreen-link">
+    <a target="_top" href="">Explore This Document In Full-Screen Mode</a>
+</div>
+
+{% endblock %}
+
+{% block extra_foot_js %}
+{{ JS.push('js/app.js') }}
+{{ JS.push('js/templates.js') }}
+{{ JS.render('js/app-footer.min.js') }}
+{% endblock extra_foot_js %}

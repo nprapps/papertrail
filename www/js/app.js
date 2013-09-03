@@ -20,7 +20,7 @@ function onDocumentLoad() {
     var title = htmlDecode(viewer.api.getTitle());
     var page_title = title + ' - Document Viewer : NPR';
     var related_url = viewer.api.getRelatedArticle();
-    var fullscreen_url = APP_CONFIG.S3_BASE_URL + '/?doc=' + slug;
+    var fullscreen_url = APP_CONFIG.S3_BASE_URL + '/document.html?id=' + slug;
 
     $('header h1').text(title);
 
@@ -43,7 +43,7 @@ function onDocumentLoad() {
 }
 
 $(function() { 
-    slug = getParameterByName('doc');
+    slug = getParameterByName('id');
     embed = getParameterByName('embed') == 'true' ? true : false;
     var width = null;
     var height = null;
