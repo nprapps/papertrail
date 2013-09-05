@@ -323,6 +323,9 @@ def _deploy_to_s3(path='.gzip'):
         local(s3cmd % (path, 's3://%s/%s/' % (bucket, app_config.PROJECT_SLUG)))
         local(s3cmd_gzip % (path, 's3://%s/%s/' % (bucket, app_config.PROJECT_SLUG)))
 
+    # HACK: Don't allow index.html on public site
+    local('s3cmd del s3://%s/%s/index.html' % (app_config.S3_BUCKETS[0], app_config.PROJECT_SLUG))
+
 def _gzip(in_path='www', out_path='.gzip'):
     """
     Gzips everything in www and puts it all in gzip
