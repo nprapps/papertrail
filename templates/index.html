@@ -3,10 +3,12 @@
 {% block body_class %}generator{% endblock body_class %}
 
 {% block header_content %}
+<nav class="tools">
+    <h3><a href="/"><img src="img/npr_75x25.png" class="npr-logo" /> Tools</a></h3>
+</nav>
 <header>
-    <img src="img/npr_75x25.png" />
     <h1>Document Embed Generator</h1>
-    
+    <h2>Use this tool to publish <a href="http://www.documentcloud.com">DocumentCloud</a> documents in Seamus or a standalone URL. New here? <a href="https://docs.google.com/document/d/1Pap_oiKaD42F9vZqj8oU0ckTZtpo6w_I8ycL1ecQGTM/edit?disco=AAAAAGRrdTI">Read a step-by-step tutorial</a>.</h2>
 </header>
 {% endblock %}
 
@@ -15,7 +17,6 @@
     <div class="col-md-12">
         <form role="form">
             <div class="form-group">
-                <p class="intro">Use this tool to publish <a href="http://www.documentcloud.com">DocumentCloud</a> documents in Seamus or a standalone URL. New here? Read a step-by-step <a href="https://docs.google.com/document/d/1Pap_oiKaD42F9vZqj8oU0ckTZtpo6w_I8ycL1ecQGTM/edit?disco=AAAAAGRrdTI">tutorial</a>.</p>
                 <label for="doc-url">First, paste In Your <a href="https://www.documentcloud.org/">DocumentCloud</a> URL</label>
                 <span class="help-block">(For example, <a class="example" href="https://www.documentcloud.org/documents/717680-doma.html">https://www.documentcloud.org/documents/717680-doma.html</a>)</span>
                 <input type="url" name="doc-url" class="form-control" />

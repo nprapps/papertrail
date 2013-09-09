@@ -183,19 +183,44 @@ header {
 
 // Generator page
 .generator {
-    header { 
+    nav.tools {
+        display: block;
         background-color: #4d4d4d;
-        margin-bottom: 33px;
+        
+        h3 {
+            font: bold 22px/44px 'Century Gothic', Arial, Helvetica, sans-serif;
+            color: #fff;
+            margin: -2px 0 0 30px;
+            
+            a {
+                font-weight: normal;
+                color: #fff;
+                
+                &:hover { opacity: .7; }
+            }
+        }
+        img.npr-logo {
+           width: 61px;
+           margin-right: 6px;
+           border: 1px solid #fff;
+        }
+    }
+    header { 
+        background-color: #ebebeb;
+        padding: 44px 30px 33px 30px;
+        margin-bottom: 44px;
         
         h1 { 
-            font-size: 22px;
-            font-family: 'Century Gothic', Arial, Helvetica, sans-serif;
-            color: #fff;
-            text-transform: lowercase; 
+            font: 36px Arial, Helvetica, sans-serif;
+            color: #555; 
+            margin: 0 0 11px 0;
+            float: none;
         }
-        img {
-            margin-right: 15px;
-            border: 1px solid #fff;
+        h2 {
+            font-size: 15px;
+            line-height: 1.4;
+            margin: 0;
+            display: block;
         }
     }
     iframe { border: none; }
@@ -237,7 +262,21 @@ header {
         }
     }
 	nav .site-links { margin-left: 20px; }
-	.generator #content { margin: 0 20px; }
+	.generator {
+	    nav.tools h3 {
+	        margin-left: 20px;
+	    }
+	    header {
+	        padding-left: 20px;
+	        padding-right: 20px;
+	    }
+	    #content { margin: 0 20px; }
+	    span.help-block {
+	        display: block;
+	        margin-left: 0;
+	        margin-top: -5px;
+	    }
+	}
 }
 @media (max-width: 480px) {
 	nav .site-links {
@@ -255,12 +294,7 @@ header {
 	    }
 	}
 	.generator header {
-	    img {
-	        width: 50px;
-	        height: auto;
-	    }
-	    h1 {
-	        font-size: 15px;
-	    }
+	    padding-top: 33px;
+	    h1 { font-size: 26px; }
 	}
 }
