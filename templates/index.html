@@ -6,6 +6,7 @@
 <header>
     <img src="img/npr_75x25.png" />
     <h1>Document Embed Generator</h1>
+    
 </header>
 {% endblock %}
 
@@ -14,8 +15,9 @@
     <div class="col-md-12">
         <form role="form">
             <div class="form-group">
-                <label for="doc-url">Paste In Your <a href="https://www.documentcloud.org/">DocumentCloud</a> URL</label>
-                <span class="help-block">(e.g., <a class="example" href="https://www.documentcloud.org/documents/717680-doma.html">https://www.documentcloud.org/documents/717680-doma.html</a>)</span>
+                <p class="intro">Use this tool to publish <a href="http://www.documentcloud.com">DocumentCloud</a> documents in Seamus or a standalone URL. New here? Read a step-by-step <a href="https://docs.google.com/document/d/1Pap_oiKaD42F9vZqj8oU0ckTZtpo6w_I8ycL1ecQGTM/edit?disco=AAAAAGRrdTI">tutorial</a>.</p>
+                <label for="doc-url">First, paste In Your <a href="https://www.documentcloud.org/">DocumentCloud</a> URL</label>
+                <span class="help-block">(For example, <a class="example" href="https://www.documentcloud.org/documents/717680-doma.html">https://www.documentcloud.org/documents/717680-doma.html</a>)</span>
                 <input type="url" name="doc-url" class="form-control" />
             </div>
 
@@ -23,7 +25,7 @@
             
             <div class="form-group results">
                 <label for="fullscreen-url">Fullscreen URL</label>
-                <span class="help-block">If you want to link directly to the full document viewer.</span>
+                <span class="help-block">If you want to link directly to the full document viewer with righthand navigation to annotations and sections of your document.</span>
                 <input type="url" name="fullscreen-url" class="form-control" readonly="readonly"/>
             </div>
   
@@ -41,7 +43,7 @@
             </div>
         </div>
 
-        <p class="footnote">Questions? Email <a href="mailto:nprapps@npr.org">nprapps@npr.org</a>.</p>
+        <p class="footnote">Questions? Email <a href="mailto:nprapps@npr.org">nprapps@npr.org</a>. </p>
     </div>
 </div>
 {% endblock %}
