@@ -25,7 +25,7 @@ function onDocumentLoad() {
     $('header h1').text(title);
 
     if (related_url && !embed) {
-        $('header h2 a').text(viewer.api.getRelatedArticle());
+        $('header h2 a').attr({ href: viewer.api.getRelatedArticle() });
         $('header h2').show();
     }
 
