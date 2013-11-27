@@ -1,3 +1,4 @@
+@import "../font/GothamSSm.css";
 @import "less/lib/bootstrap/bootstrap";
 @import "less/lib/font-awesome/font-awesome";
 @import "less/adhesion";
@@ -10,7 +11,7 @@
 
 // General styles
 body { 
-    font: 16px/1.5em Arial, Helvetica, sans-serif; 
+    font: 16px/1.5em "Gotham SSm", Arial, Helvetica, sans-serif; 
     color: #111; 
     -webkit-font-smoothing: antialiased;
 }
@@ -119,6 +120,7 @@ header {
 	    margin: 0;
 	}
 	h2 { 
+        font: 15px "Gotham SSm", "Century Gothic", Arial, Helvetica, sans-serif;
 	    color: #666; 
 	    margin: 9px 0 0 11px;
 	    font-size: 14px;
@@ -170,7 +172,7 @@ header {
         background-color: #e0e0e0;
         padding: 22px;
         h1 { 
-            font: bold 14px Arial, Helvetica, sans-serif;
+            font: bold 14px "Gotham SSm", Arial, Helvetica, sans-serif;
             color: #666;
         }
         h2 { display: none; }
@@ -182,12 +184,44 @@ header {
 .generator {
     nav.tools {
         display: block;
-        background-color: #4d4d4d;
+        position: fixed;
+        background-color: #222222;
+        height: auto;
+        min-height: 89px;
+        width: 100%;
+        padding: 15px 15px 15px 65px;
         
+        a {
+            color: @gray-lighter;
+        }
+
+        a:hover {
+            color: @gray;
+            text-decoration: none;
+        }
+        
+        .icon-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 30px 15px 0 15px;
+            min-height: 89px;
+            border-style: solid;
+            border-color: @gray-lighter;
+            border-width: 0 1px 0 0;
+            font-size: 35px;
+        }
+
         h3 {
-            font: bold 22px/44px 'Century Gothic', Arial, Helvetica, sans-serif;
+            font: 36px "Gotham SSm", "Century Gothic", Arial, Helvetica, sans-serif;
             color: #fff;
-            margin: -2px 0 0 30px;
+            margin: 5px 0 0 30px;
+            float: left;
+            text-transform: uppercase;
+
+            @media screen and (max-width: @screen-sm) {
+                font-size: 24px;
+            }
             
             a {
                 font-weight: normal;
@@ -197,24 +231,32 @@ header {
             }
         }
         img.npr-logo {
-           width: 61px;
-           margin-right: 6px;
-           border: 1px solid #fff;
+           float: right;
+           margin-top: 15px;
+
+           @media screen and (max-width: @screen-sm) {
+                float: none;
+                margin-left: 20px;
+            }
         }
     }
     header { 
         background-color: #ebebeb;
-        padding: 44px 30px 33px 30px;
+        padding: 133px 30px 33px 30px;
         margin-bottom: 44px;
         
+        @media screen and (max-width: 480px) {
+            padding-top: 200px !important;
+        }
+
         h1 { 
-            font: 36px Arial, Helvetica, sans-serif;
+            font: 36px "Gotham SSm", Arial, Helvetica, sans-serif;
             color: #555; 
             margin: 0 0 11px 0;
             float: none;
         }
         h2 {
-            font-size: 15px;
+            font-size: 15px "Gotham SSm", "Century Gothic", Arial, Helvetica, sans-serif;
             line-height: 1.4;
             margin: 0;
             display: block;
