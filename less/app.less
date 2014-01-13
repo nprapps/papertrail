@@ -124,6 +124,22 @@ nav {
             font-family: "Gotham SSm", Arial, Helvetica, sans-serif; 
             line-height: 32px;
             margin: 0;
+            
+            span.help {
+                font-size: 14px;
+                margin-left: 11px;
+                opacity: 0.7;
+                text-transform: none;
+                
+                i { margin-right: 5px; }
+            }
+        }
+        
+        a {
+            font-weight: normal;
+            color: #eee;
+            
+            &:hover { opacity: 0.7; }
         }
 
         img {
@@ -135,13 +151,7 @@ nav {
         
         a.toolkit-link { 
             float: right;
-            font-weight: normal;
-            color: #eee;
             line-height: 32px;
-
-            &:hover {
-                opacity: 0.7;
-            }
         }
 
         .generator & { display: block; }
@@ -223,7 +233,7 @@ header {
 .generator {
     header { 
         background-color: #ebebeb;
-        padding: 33px 30px 33px 30px;
+        padding: 15px 30px;
         margin-bottom: 44px;
         
         @media screen and (max-width: 480px) {
