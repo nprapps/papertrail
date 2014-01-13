@@ -44,6 +44,14 @@ function onDocumentLoad() {
     if (window.innerWidth <= 480) {
         $('.DV-collapsibleControls').hide();
     }
+
+    // Fix viewer positioning if title is long
+    var offset = $('#content').offset()
+    var $el = $('.DV-docViewer');
+
+    $el.css({
+        top: offset.top + 'px'
+    });
 }
 
 function setupGoogleAnalytics() {
