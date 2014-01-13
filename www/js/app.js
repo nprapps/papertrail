@@ -40,6 +40,10 @@ function onDocumentLoad() {
     $('.social-links').html(JST.share(context));
     
     document.title = page_title;
+
+    if (window.innerWidth <= 480) {
+        $('.DV-collapsibleControls').hide();
+    }
 }
 
 function setupGoogleAnalytics() {
