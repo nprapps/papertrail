@@ -107,12 +107,52 @@ nav {
     }
     
     .fullscreen & { display: block; }
+
+	&.tools {
+        background: #222;
+        margin: 0;
+        padding: 25px 30px;
+        color: #eee;
+        height: auto;
+        display: none;
+
+        h1 {
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: normal;
+            -webkit-font-smoothing: antialiased;
+            font-family: "Gotham SSm", Arial, Helvetica, sans-serif; 
+            line-height: 32px;
+            margin: 0;
+        }
+
+        img {
+            height: 20px;
+            width: auto;
+            border: 1px solid #eee;
+            margin-right: 5px;
+        }
+        
+        a.toolkit-link { 
+            float: right;
+            font-weight: normal;
+            color: #eee;
+            line-height: 32px;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+
+        .generator & { display: block; }
+    }
 }
 
 
 // Header
 header {
 	padding: 22px 30px;
+	.clearfix();
 
 	h1 { 
 	    float: left;
@@ -127,7 +167,6 @@ header {
 	    float: left;
         display: none;
 	}
-	&:after { visibility: hidden; display: block; content: ""; clear: both; height: 0; }
 }
 
 
@@ -182,67 +221,9 @@ header {
 
 // Generator page
 .generator {
-    nav.tools {
-        display: block;
-        position: fixed;
-        background-color: #222222;
-        height: auto;
-        min-height: 89px;
-        width: 100%;
-        padding: 15px 15px 15px 65px;
-        
-        a {
-            color: @gray-lighter;
-        }
-
-        a:hover {
-            color: @gray;
-            text-decoration: none;
-        }
-        
-        .icon-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 30px 15px 0 15px;
-            min-height: 89px;
-            border-style: solid;
-            border-color: @gray-lighter;
-            border-width: 0 1px 0 0;
-            font-size: 35px;
-        }
-
-        h3 {
-            font: 36px "Gotham SSm", "Century Gothic", Arial, Helvetica, sans-serif;
-            color: #fff;
-            margin: 5px 0 0 30px;
-            float: left;
-            text-transform: uppercase;
-
-            @media screen and (max-width: @screen-sm) {
-                font-size: 24px;
-            }
-            
-            a {
-                font-weight: normal;
-                color: #fff;
-                
-                &:hover { opacity: .7; }
-            }
-        }
-        img.npr-logo {
-           float: right;
-           margin-top: 15px;
-
-           @media screen and (max-width: @screen-sm) {
-                float: none;
-                margin-left: 20px;
-            }
-        }
-    }
     header { 
         background-color: #ebebeb;
-        padding: 133px 30px 33px 30px;
+        padding: 33px 30px 33px 30px;
         margin-bottom: 44px;
         
         @media screen and (max-width: 480px) {
