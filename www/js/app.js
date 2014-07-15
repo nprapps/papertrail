@@ -20,7 +20,7 @@ function onDocumentLoad() {
     var title = htmlDecode(viewer.api.getTitle());
     var page_title = title + ' - Document Viewer : NPR';
     var related_url = viewer.api.getRelatedArticle();
-    var fullscreen_url = APP_CONFIG.S3_BASE_URL + '/document.html?id=' + slug;
+    var fullscreen_url = 'http://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + slug;
 
     $('header h1').text(title);
 
