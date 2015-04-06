@@ -38,20 +38,12 @@ function onDocumentLoad() {
     });
 
     $('.social-links').html(JST.share(context));
-    
+
     document.title = page_title;
 
     if (window.innerWidth <= 480) {
         $('.DV-collapsibleControls').hide();
     }
-
-    // Fix viewer positioning if title is long
-    var offset = $('#content').offset()
-    var $el = $('.DV-docViewer');
-
-    $el.css({
-        top: offset.top + 'px'
-    });
 }
 
 function setupGoogleAnalytics() {
@@ -63,7 +55,7 @@ function setupGoogleAnalytics() {
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-} 
+}
 
 function setupChartbeat() {
     var _sf_async_config={};
@@ -90,7 +82,7 @@ function setupChartbeat() {
     })();
 }
 
-$(function() { 
+$(function() {
     slug = getParameterByName('id');
     embed = getParameterByName('embed') == 'true' ? true : false;
     var width = null;
@@ -99,7 +91,7 @@ $(function() {
 
     if (embed) {
         width = '100%';
-        height = 450; 
+        height = 450;
         sidebar = false;
         $('body').addClass('embed');
     } else {
@@ -113,12 +105,12 @@ $(function() {
         sidebar = false;
     }
 
-    viewer = DV.load('//www.documentcloud.org/documents/' + slug 
+    viewer = DV.load('//www.documentcloud.org/documents/' + slug
 + '.js', {
         width: width,
         height: height,
         sidebar: sidebar,
         container: '#DV-viewer',
-        afterLoad: onDocumentLoad 
+        afterLoad: onDocumentLoad
     });
 });
