@@ -29,7 +29,7 @@ PROJECT_FILENAME = 'papertrail'
 """
 DEPLOYMENT
 """
-FILE_SERVER = '10.53.32.11'
+FILE_SERVER = '10.53.17.49'
 S3_BUCKET = 'apps.npr.org'
 
 # These variables will be set at runtime. See configure_targets() below
@@ -38,7 +38,7 @@ DEBUG = True
 """
 COPY EDITING
 """
-COPY_GOOGLE_DOC_KEY = '0AlXMOHKxzQVRdHZuX1UycXplRlBfLVB0UVNldHJYZmc'
+COPY_GOOGLE_DOC_KEY = '1pogl4JaaIkEcXvPu2zDbTo_I4uLNSEm0vB8WxnNPBuU'
 
 """
 SHARING
@@ -49,7 +49,7 @@ SHARE_URL = 'http://%s/%s/' % (S3_BUCKET, PROJECT_SLUG)
 TWITTER = {
     'TEXT': PROJECT_NAME,
     'URL': SHARE_URL,
-    # Will be resized to 120x120, can't be larger than 1MB 
+    # Will be resized to 120x120, can't be larger than 1MB
     'IMAGE_URL': ''
 }
 
