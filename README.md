@@ -70,7 +70,7 @@ Then install the project requirements:
 
 ```
 cd papertrail
-npm install less universal-jst -g --prefix node_modules
+npm install
 mkvirtualenv --no-site-packages papertrail
 pip install -r requirements.txt
 ```
