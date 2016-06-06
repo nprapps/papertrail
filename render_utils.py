@@ -64,8 +64,6 @@ class Includer(object):
 
             markup = Markup(self.tag_string % self._relativize_path(path))
         else:
-            response = ','.join(self.includes)
-
             response = '\n'.join([
                 self.tag_string % self._relativize_path(src) for src in self.includes
             ])
@@ -99,8 +97,8 @@ class JavascriptIncluder(Includer):
         context = make_context()
         context['paths'] = src_paths
 
-        header = render_template('_js_header.js', **context) 
-        output.insert(0, header) 
+        header = render_template('_js_header.js', **context)
+        output.insert(0, header)
 
         return '\n'.join(output)
 
@@ -134,8 +132,8 @@ class CSSIncluder(Includer):
         context = make_context()
         context['paths'] = src_paths
 
-        header = render_template('_css_header.css', **context) 
-        output.insert(0, header) 
+        header = render_template('_css_header.css', **context)
+        output.insert(0, header)
 
 
         return '\n'.join(output)
