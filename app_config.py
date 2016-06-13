@@ -29,7 +29,7 @@ PROJECT_FILENAME = 'papertrail'
 """
 DEPLOYMENT
 """
-FILE_SERVER = '10.53.17.49'
+FILE_SERVER = '10.36.2.26'
 S3_BUCKET = 'apps.npr.org'
 
 # These variables will be set at runtime. See configure_targets() below
