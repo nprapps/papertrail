@@ -30,12 +30,17 @@
     <div class="col-md-12">
         <form role="form">
             <div class="form-group">
-                    <label for="doc-url">First, paste In Your <a href="https://www.documentcloud.org/">DocumentCloud</a> annotation URL</label>
-                    <span class="help-block">(For example, <a class="example" href="https://www.documentcloud.org/documents/2708497-Angelos-Clemency-Final.html#annotation/a276751">https://www.documentcloud.org/documents/2708497-Angelos-Clemency-Final.html#annotation/a276751</a>)</span>
-                    <input type="url" name="doc-url" class="form-control" />
-                </div>
+                <label for="doc-url">First, paste In Your <a href="https://www.documentcloud.org/">DocumentCloud</a> annotation URL</label>
+                <span class="help-block">(For example, <a class="example" href="https://www.documentcloud.org/documents/2708497-Angelos-Clemency-Final.html#annotation/a276751">https://www.documentcloud.org/documents/2708497-Angelos-Clemency-Final.html#annotation/a276751</a>)</span>
+                <input type="url" name="doc-url" class="form-control" />
+            </div>
 
-                <button id="generate" type="button" class="btn btn-blue">Generate embed code</button>
+            <button id="generate" type="button" class="btn btn-blue">Generate embed code</button>
+
+            <div class="form-group hidden">
+                <input type="url" name="fullscreen-url" class="form-control" readonly="readonly"/>
+            </div>
+
             <div class="form-group results">
                 <label for="embed-code">Embed Code For Seamus</label>
                 <span class="help-block">Add this code to your Seamus story as an <i class="icon-code"></i> HTML asset.</span>
