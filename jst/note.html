@@ -26,10 +26,7 @@
             @*/
         }
         if (window.dc && window.dc.embed) {
-                console.log("found existing note embed code, reuse it");
-                console.log("notes: " + window.dc.embed.notes);
-
-                // Clear out notes to force redraw
+                // Clear out existing note to force redraw
                 if (window.dc.embed.notes[<%=dc_note_id%>]) {
                     delete window.dc.embed.notes[<%=dc_note_id%>];
                 }
