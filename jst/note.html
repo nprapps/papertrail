@@ -12,8 +12,6 @@
             head.appendChild(link);
         };
 
-        var note_url = '//www.documentcloud.org/documents/<%=dc_slug%>/annotations/<%=dc_note_id%>.js';
-
         //Check if we have the CSS in place if not load it
         if (!$("link[href='//assets.documentcloud.org/note_embed/note_embed-datauri.css']").length &&
             !$("link[href='//assets.documentcloud.org/note_embed/note_embed.css']").length) {
@@ -30,13 +28,13 @@
                 if (window.dc.embed.notes[<%=dc_note_id%>]) {
                     delete window.dc.embed.notes[<%=dc_note_id%>];
                 }
-                dc.embed.loadNote(note_url);
+                dc.embed.loadNote('//www.documentcloud.org/documents/<%=dc_slug%>/annotations/<%=dc_note_id%>.js');
         }
         else {
             // Load note_embed script
             $.getScript('//assets.documentcloud.org/note_embed/note_embed.js').done(function () {
                 $(function () {
-                    dc.embed.loadNote(note_url);
+                    dc.embed.loadNote('//www.documentcloud.org/documents/<%=dc_slug%>/annotations/<%=dc_note_id%>.js');
                 });
             });
         }
