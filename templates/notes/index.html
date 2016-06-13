@@ -1,0 +1,61 @@
+{% extends '_base.html' %}
+
+{% block body_class %}generator{% endblock body_class %}
+
+{% block header_content %}
+<nav class="tools">
+    <h1>
+        Documents
+        <span class="help">
+            <a href="https://docs.google.com/document/d/11g_etvLz8V8o2kQidbwdjUdyfLPMR566sxc-yQ0WjGI/edit">
+            <i class="fa fa-info-circle"></i>
+            How To Use This
+            </a>
+        </span>
+    </h1>
+    <a class="toolkit-link" href="http://tools.apps.npr.org">
+        <span class="logo-wrapper"><img src="http://media.npr.org/chrome/news/nprlogo_138x46.gif" alt="NPR" /></span>
+        Newsroom Toolkit
+    </a>
+</nav>
+
+<header>
+    <h1>DocumentCloud Note Embed Generator</h1>
+    <h2>Use this tool to publish a <a href="http://www.documentcloud.com">DocumentCloud</a> annotation in Seamus. New here? <a href="https://docs.google.com/document/d/1POf0hjt8FYIIS0uYXTeKUV_TePN257b8cHrT8SnpQ0o/edit?usp=sharing">Read a step-by-step tutorial</a>.</h2>
+</header>
+{% endblock %}
+
+{% block wide_content %}
+<div class="row">
+    <div class="col-md-12">
+        <form role="form">
+            <div class="form-group">
+                    <label for="doc-url">First, paste In Your <a href="https://www.documentcloud.org/">DocumentCloud</a> annotation URL</label>
+                    <span class="help-block">(For example, <a class="example" href="https://www.documentcloud.org/documents/2708497-Angelos-Clemency-Final.html#annotation/a276751">https://www.documentcloud.org/documents/2708497-Angelos-Clemency-Final.html#annotation/a276751</a>)</span>
+                    <input type="url" name="doc-url" class="form-control" />
+                </div>
+
+                <button id="generate" type="button" class="btn btn-blue">Generate embed code</button>
+            <div class="form-group results">
+                <label for="embed-code">Embed Code For Seamus</label>
+                <span class="help-block">Add this code to your Seamus story as an <i class="icon-code"></i> HTML asset.</span>
+                <textarea name="embed-code" class="form-control" rows="3" readonly="readonly"></textarea>
+            </div>
+        </form>
+
+        <div class="results">
+            <label for="DC-note-example">How Your Embedded Annotation Will Look</label>
+
+            <div id="DC-note-example"></div>
+        </div>
+
+        <p class="footnote">Questions? Email <a href="mailto:nprapps@npr.org">nprapps@npr.org</a>. </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_foot_js %}
+{{ JS.push('js/generate-note.js') }}
+{{ JS.push('js/templates.js') }}
+{{ JS.render('js/generate-footer.min.js') }}
+{% endblock extra_foot_js %}

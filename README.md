@@ -22,7 +22,9 @@ papertrail
 What is this?
 -------------
 
-**Describe papertrail here.**
+Papertrail is a wrapper over DocumentCloud embeds so that they play nicefully with seamus at NPR.
+
+We have created two wrappers one for entire documents and another specifically for annotations
 
 Assumptions
 -----------
@@ -70,9 +72,9 @@ Then install the project requirements:
 
 ```
 cd papertrail
-npm install
 mkvirtualenv --no-site-packages papertrail
 pip install -r requirements.txt
+npm install
 ```
 
 Project secrets

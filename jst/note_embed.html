@@ -1,0 +1,54 @@
+<div id="DC-note-<%= dc_note_id %>"></div>
+<script type="text/javascript">
+    if (typeof $ !== 'undefined' && typeof $.getScript === 'function') {
+        // Simulate loader script
+        var loadCSS = function(url, media) {
+            var link   = document.createElement('link');
+            link.rel   = 'stylesheet';
+            link.type  = 'text/css';
+            link.media = media || 'screen';
+            link.href  = url;
+            var head   = document.getElementsByTagName('head')[0];
+            head.appendChild(link);
+        };
+
+        var note_url = '//www.documentcloud.org/documents/<%=dc_slug%>/annotations/<%=dc_note_id%>.js';
+
+        //Check if we have the CSS in place if not load it
+        if (!$("link[href='//assets.documentcloud.org/note_embed/note_embed-datauri.css']").length &&
+            !$("link[href='//assets.documentcloud.org/note_embed/note_embed.css']").length) {
+            /*@cc_on
+            /*@if (@_jscript_version < 5.8)
+                loadCSS("//assets.documentcloud.org/note_embed/note_embed.css");
+            @else @*/
+                loadCSS("//assets.documentcloud.org/note_embed/note_embed-datauri.css");
+            /*@end
+            @*/
+        }
+        if (window.dc && window.dc.embed) {
+                console.log("found existing note embed code, reuse it");
+                console.log("notes: " + window.dc.embed.notes);
+
+                // Clear out notes to force redraw
+                // TODO: Test for more than one note.
+                if (window.dc.embed.notes[<%=dc_note_id%>]) {
+                    delete window.dc.embed.notes[<%=dc_note_id%>];
+                }
+                dc.embed.loadNote(note_url);
+        }
+        else {
+            // Load note_embed script
+            $.getScript('//assets.documentcloud.org/note_embed/note_embed.js').done(function () {
+                // Wait for page load
+                $(function () {
+                    //load document cloud note
+                    dc.embed.loadNote(note_url);
+                });
+            });
+        }
+    // jQuery is not on the page
+    } else {
+        console.error('Could not load '+ <%=dc_note_id%> +'! jQuery is not on the page.');
+    }
+</script>
+

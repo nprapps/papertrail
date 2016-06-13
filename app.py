@@ -28,6 +28,13 @@ def document():
     """
     return render_template('document.html', **make_context())
 
+@app.route('/notes/')
+def document():
+    """
+    Generate embed code.
+    """
+    return render_template('notes/index.html', **make_context())
+
 @app.route('/test/test.html')
 def test_dir():
     return render_template('index.html', **make_context())
