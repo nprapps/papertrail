@@ -1,7 +1,7 @@
 <div id="DC-note-<%= dc_note_id %>"></div>
 <script type="text/javascript">
     if (typeof $ !== 'undefined' && typeof $.getScript === 'function') {
-        // Simulate loader script
+        // Simulate DocumentCloud loader script
         var loadCSS = function(url, media) {
             var link   = document.createElement('link');
             link.rel   = 'stylesheet';
@@ -30,7 +30,6 @@
                 console.log("notes: " + window.dc.embed.notes);
 
                 // Clear out notes to force redraw
-                // TODO: Test for more than one note.
                 if (window.dc.embed.notes[<%=dc_note_id%>]) {
                     delete window.dc.embed.notes[<%=dc_note_id%>];
                 }
@@ -39,9 +38,7 @@
         else {
             // Load note_embed script
             $.getScript('//assets.documentcloud.org/note_embed/note_embed.js').done(function () {
-                // Wait for page load
                 $(function () {
-                    //load document cloud note
                     dc.embed.loadNote(note_url);
                 });
             });
