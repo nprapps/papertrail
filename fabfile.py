@@ -137,7 +137,7 @@ def deploy_to_file_server(path='www'):
     local('rm -rf %s/live-data' % path)
     local('rm -rf %s/sitemap.xml' % path)
 
-    local('rsync -vr %s/ ubuntu@%s:~/www/%s' % (path, app_config.FILE_SERVER, app_config.PROJECT_SLUG))
+    local('rsync -vr %s/ tools-admin@%s:~/www/%s' % (path, app_config.FILE_SERVER, app_config.PROJECT_SLUG))
 
 def _deploy_to_s3(path='.gzip'):
     """
