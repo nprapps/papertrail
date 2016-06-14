@@ -29,7 +29,7 @@ def document():
     return render_template('document.html', **make_context())
 
 @app.route('/notes/')
-def document():
+def notes():
     """
     Generate embed code.
     """
