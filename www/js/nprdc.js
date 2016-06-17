@@ -57,7 +57,6 @@ var nprdc = (function () {
     }
 
     return {
-        log: log,
         embedNote : embedNote
     }
 }());
