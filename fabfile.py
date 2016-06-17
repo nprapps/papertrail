@@ -139,6 +139,18 @@ def deploy_to_file_server(path='www'):
 
     local('rsync -vr %s/ tools-admin@%s:~/www/%s' % (path, app_config.FILE_SERVER, app_config.PROJECT_SLUG))
 
+
+def deploy_nprdc_to_s3():
+    """
+    Deploy test script to s3
+    """
+    source_path = 'www/js/nprdc.js'
+    remote_path = 'js/nprdc.js'
+    s3cmd = 's3cmd -P --add-header=Cache-Control:max-age=5 --guess-mime-type put %s %s'
+    local(s3cmd % (source_path, 's3://%s/%s/%s' % (app_config.S3_BUCKET, app_config.PROJECT_SLUG, remote_path)))
+
+
+
 def _deploy_to_s3(path='.gzip'):
     """
     Deploy the gzipped stuff to S3.

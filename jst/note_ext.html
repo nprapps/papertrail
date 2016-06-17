@@ -1,0 +1,8 @@
+<div id="DC-note-<%= dc_note_id %>" class="DC-note-container"></div>
+<script src="//apps.npr.org.s3.amazonaws.com/documents/js/nprdc.js"></script>
+<script type="text/javascript">
+    if (typeof $ !== 'undefined' && typeof $.getScript === 'function') {
+        nprdc.embedNote("<%= dc_note_url %>", "#DC-note-<%= dc_note_id %>");
+    }
+</script>
+
