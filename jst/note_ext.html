@@ -1,8 +1,14 @@
 <div id="DC-note-<%= dc_note_id %>" class="DC-note-container"></div>
-<script src="//apps.npr.org/documents/js/nprdc.js"></script>
 <script type="text/javascript">
     if (typeof $ !== 'undefined' && typeof $.getScript === 'function') {
-        nprdc.embedNote("<%= dc_note_url %>", "#DC-note-<%= dc_note_id %>");
+        if (window.nprdc) {
+            nprdc.embedNote("<%= dc_note_url %>", "#DC-note-<%= dc_note_id %>");
+        }
+        else {
+            // Load nprdc script
+            $.getScript('//apps.npr.org/documents/js/nprdc.js').done(function () {
+                nprdc.embedNote("<%= dc_note_url %>", "#DC-note-<%= dc_note_id %>");
+            });
+        }
     }
 </script>
-
