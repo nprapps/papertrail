@@ -26,6 +26,11 @@ $('#generate').click(function() {
         alert('This does appear to be a valid DocumentCloud Note URL.');
     }
 
+    // Generate Published URL to update DocumentCloud
+    published_url = 'http://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + dc_slug;
+    console.log(published_url);
+    $('input[name="pulbished-url"]').val(published_url);
+
     // Generate seamus HTML embed code
     var embed = JST.note_ext({ dc_note_url: url, dc_note_id: dc_note_id});
     $('textarea[name="embed-code"]').val(embed);

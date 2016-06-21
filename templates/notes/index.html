@@ -7,7 +7,7 @@
     <h1>
         Documents
         <span class="help">
-            <a href="https://docs.google.com/document/d/1POf0hjt8FYIIS0uYXTeKUV_TePN257b8cHrT8SnpQ0o/edit">
+            <a href="https://docs.google.com/document/d/11g_etvLz8V8o2kQidbwdjUdyfLPMR566sxc-yQ0WjGI/edit">
             <i class="fa fa-info-circle"></i>
             How To Use This
             </a>
@@ -21,7 +21,8 @@
 
 <header>
     <h1>DocumentCloud Note Embed Generator</h1>
-    <h2>Use this tool to publish a <a href="http://www.documentcloud.org">DocumentCloud</a> annotation in Seamus. New here? <a href="https://docs.google.com/document/d/1POf0hjt8FYIIS0uYXTeKUV_TePN257b8cHrT8SnpQ0o/edit?usp=sharing">Read a step-by-step tutorial</a>.</h2>
+    <h2>Use this tool to publish a <a href="http://www.documentcloud.org">DocumentCloud</a> annotation in Seamus. New here? <a href="https://docs.google.com/document/d/11g_etvLz8V8o2kQidbwdjUdyfLPMR566sxc-yQ0WjGI/edit">Read a step-by-step tutorial</a>.</h2>
+    <h2 class="ilink"><i class="fa fa-info-circle"></i> Looking for a tool to embed a DocumentCloud document? head <a href="http://tools.apps.npr.org/documents/">here</a></h2>
 </header>
 {% endblock %}
 
@@ -37,15 +38,18 @@
 
             <button id="generate" type="button" class="btn btn-blue">Generate embed code</button>
 
-            <div class="form-group hidden">
-                <input type="url" name="fullscreen-url" class="form-control" readonly="readonly"/>
-            </div>
-
             <div class="form-group results">
                 <label for="embed-code">Embed Code For Seamus</label>
                 <span class="help-block">Add this code to your Seamus story as an <i class="icon-code"></i> HTML asset.</span>
                 <textarea name="embed-code" class="form-control" rows="10" readonly="readonly"></textarea>
             </div>
+
+            <div class="form-group results">
+                <label for="fullscreen-url">Published URL</label>
+                <span class="help-block">Remember to update this Published URL in DocumentCloud. Look <a href="https://docs.google.com/document/d/11g_etvLz8V8o2kQidbwdjUdyfLPMR566sxc-yQ0WjGI/edit">here</a> If you don't know/remember how to do that</span>
+                <input type="url" name="pulbished-url" class="form-control" readonly="readonly"/>
+            </div>
+
         </form>
 
         <div class="results">
