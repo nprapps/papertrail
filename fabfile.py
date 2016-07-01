@@ -179,9 +179,10 @@ def deploy(remote='origin'):
     Deploy the latest app to S3 and, if configured, to our servers.
     """
     render()
-    _gzip('www', '.gzip')
     deploy_to_file_server('www')
+    _gzip('www', '.gzip')
     _deploy_to_s3('.gzip')
+
 
 """
 Destruction
