@@ -16,7 +16,7 @@ function htmlDecode(input) {
     return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
 }
 
-function onDocumentLoad() {
+function onDocumentLoad(viewer) {
     var title = htmlDecode(viewer.api.getTitle());
     var page_title = title + ' - Document Viewer : NPR';
     var related_url = viewer.api.getRelatedArticle();
