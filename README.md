@@ -18,6 +18,7 @@ papertrail
 * [Compile static assets](#compile-static-assets)
 * [Test the rendered app](#test-the-rendered-app)
 * [Deploy](#deploy)
+* [Caution Note](#caution-note)
 
 What is this?
 -------------
@@ -186,4 +187,9 @@ Deploy
 ```
 fab deploy
 ```
+
+Caution Note
+------------
+
+Sometimes s3cmd does not guess the MIME type of the minified javscript files correctly so once you have pushed to S3, make sure that the Content-Type header is set to `application/javascript`
 

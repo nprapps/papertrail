@@ -167,6 +167,8 @@ def _deploy_to_s3(path='.gzip'):
 
     # HACK: Don't allow index.html on public site
     local('s3cmd del s3://%s/%s/index.html' % (app_config.S3_BUCKET, app_config.PROJECT_SLUG))
+    # HACK: Don't allow notes/index.html on public site
+    local('s3cmd del s3://%s/%s/notes/index.html' % (app_config.S3_BUCKET, app_config.PROJECT_SLUG))
 
 def _gzip(in_path='www', out_path='.gzip'):
     """
