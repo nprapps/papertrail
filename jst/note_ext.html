@@ -6,7 +6,7 @@
         }
         else {
             // Load nprdc script
-            $.getScript('//apps.npr.org/documents/js/nprdc.js').done(function () {
+            $.getScript('https://apps.npr.org/documents/js/nprdc.js').done(function () {
                 nprdc.embedNote("<%= dc_note_url %>", "#DC-note-<%= dc_note_id %>");
             });
         }

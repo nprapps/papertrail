@@ -11,7 +11,7 @@ var nprdc = (function () {
             }
 
             // Compose the note javascript url
-            var note_url = '//www.documentcloud.org/documents/'+dc_slug+'/annotations/'+dc_note_id+'.js'
+            var note_url = 'https://www.documentcloud.org/documents/'+dc_slug+'/annotations/'+dc_note_id+'.js'
 
             // Simulate DocumentCloud loader script
             var loadCSS = function(url, media) {
@@ -25,13 +25,13 @@ var nprdc = (function () {
             };
 
             //Check if we have the CSS in place if not load it
-            if (!$("link[href='//assets.documentcloud.org/note_embed/note_embed-datauri.css']").length &&
-                !$("link[href='//assets.documentcloud.org/note_embed/note_embed.css']").length) {
+            if (!$("link[href='https://assets.documentcloud.org/note_embed/note_embed-datauri.css']").length &&
+                !$("link[href='https://assets.documentcloud.org/note_embed/note_embed.css']").length) {
                 /*@cc_on
                 /*@if (@_jscript_version < 5.8)
-                    loadCSS('//assets.documentcloud.org/note_embed/note_embed.css');
+                    loadCSS('https://assets.documentcloud.org/note_embed/note_embed.css');
                 @else @*/
-                    loadCSS('//assets.documentcloud.org/note_embed/note_embed-datauri.css');
+                    loadCSS('https://assets.documentcloud.org/note_embed/note_embed-datauri.css');
                 /*@end
                 @*/
             }
@@ -44,7 +44,7 @@ var nprdc = (function () {
             }
             else {
                 // Load note_embed script
-                $.getScript('//assets.documentcloud.org/note_embed/note_embed.js').done(function () {
+                $.getScript('https://assets.documentcloud.org/note_embed/note_embed.js').done(function () {
                     $(function () {
                         dc.embed.loadNote(note_url, {'container': container});
                     });

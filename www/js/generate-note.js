@@ -27,7 +27,7 @@ $('#generate').click(function() {
     }
 
     // Generate Published URL to update DocumentCloud
-    published_url = 'http://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + dc_slug;
+    published_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + dc_slug;
     console.log(published_url);
     $('input[name="pulbished-url"]').val(published_url);
 

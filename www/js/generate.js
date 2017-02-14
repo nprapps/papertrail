@@ -23,8 +23,8 @@ $('#generate').click(function() {
         return;
     }
 
-    fullscreen_url = 'http://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + slug;
-    embed_url = 'http://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?embed=true&id=' + slug;
+    fullscreen_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + slug;
+    embed_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?embed=true&id=' + slug;
 
     var iframe = JST.embed({ url: embed_url });
 
