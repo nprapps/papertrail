@@ -31,6 +31,7 @@ DEPLOYMENT
 """
 FILE_SERVER = '10.36.2.26'
 S3_BUCKET = 'apps.npr.org'
+DEFAULT_MAX_AGE = 20
 
 # These variables will be set at runtime. See configure_targets() below
 DEBUG = True
