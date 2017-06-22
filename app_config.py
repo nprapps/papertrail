@@ -44,8 +44,7 @@ COPY_GOOGLE_DOC_KEY = '1pogl4JaaIkEcXvPu2zDbTo_I4uLNSEm0vB8WxnNPBuU'
 """
 SHARING
 """
-PROJECT_DESCRIPTION = ''
-SHARE_URL = 'http://%s/%s/' % (S3_BUCKET, PROJECT_SLUG)
+SHARE_URL = 'https://%s/%s/' % (S3_BUCKET, PROJECT_SLUG)
 
 TWITTER = {
     'TEXT': PROJECT_NAME,
@@ -57,7 +56,7 @@ TWITTER = {
 FACEBOOK = {
     'TITLE': PROJECT_NAME,
     'URL': SHARE_URL,
-    'DESCRIPTION': PROJECT_DESCRIPTION,
+    'DESCRIPTION': "",
     # Should be square. No documented restrictions on size
     'IMAGE_URL': TWITTER['IMAGE_URL'],
     'APP_ID': '138837436154588'
