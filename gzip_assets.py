@@ -15,14 +15,6 @@ import os
 import shutil
 import sys
 
-class FakeTime:
-    def time(self):
-        return 1261130520.0
-
-# Hack to override gzip's time implementation
-# See: http://stackoverflow.com/questions/264224/setting-the-gzip-timestamp-from-python
-gzip.time = FakeTime()
-
 def is_compressable(filename, gzip_globs):
     """
     Determine if a filename is a gzippable type
@@ -37,7 +29,7 @@ def compress(file_path):
     f_in = open(file_path, 'rb')
     contents = f_in.readlines()
     f_in.close()
-    f_out = gzip.open(file_path, 'wb')
+    f_out = gzip.open(file_path, 'wb', mtime=0)
     f_out.writelines(contents)
     f_out.close()
 
@@ -74,7 +66,7 @@ def main():
         shutil.copy(in_path, out_path)
 
         if not is_compressable(filename, gzip_globs):
-            return 
+            return
 
         compress(out_path)
 
