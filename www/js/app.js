@@ -19,14 +19,9 @@ function htmlDecode(input) {
 function onDocumentLoad(viewer) {
 
     var title = htmlDecode(viewer.api.getTitle());
-    var description = htmlDecode(viewer.api.getDescription());
     var page_title = title + ' - Document Viewer : NPR';
     var related_url = viewer.api.getRelatedArticle();
     var fullscreen_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + slug;
-
-    if (description) {
-        $('meta[name=description]').attr('content', description);
-    }
 
     $('header h1').text(title);
 
