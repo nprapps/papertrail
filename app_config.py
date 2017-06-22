@@ -44,7 +44,7 @@ COPY_GOOGLE_DOC_KEY = '1pogl4JaaIkEcXvPu2zDbTo_I4uLNSEm0vB8WxnNPBuU'
 """
 SHARING
 """
-PROJECT_DESCRIPTION = 'An opinionated project template for (mostly) server-less apps.'
+PROJECT_DESCRIPTION = ''
 SHARE_URL = 'http://%s/%s/' % (S3_BUCKET, PROJECT_SLUG)
 
 TWITTER = {
