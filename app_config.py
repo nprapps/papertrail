@@ -29,7 +29,7 @@ PROJECT_FILENAME = 'papertrail'
 """
 DEPLOYMENT
 """
-FILE_SERVER = '10.36.2.26'
+FILE_SERVER = '10.36.1.8'
 S3_BUCKET = 'apps.npr.org'
 DEFAULT_MAX_AGE = 20
 

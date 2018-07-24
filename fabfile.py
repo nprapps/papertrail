@@ -150,7 +150,7 @@ def prep_bool_arg(arg):
 
 
 def deploy_to_file_server(path='www'):
-    local('rsync -vr %s/ tools-admin@%s:~/www/%s' % (path,
+    local('rsync -vr %s/ visadmin@%s:~/www/%s' % (path,
                                                      app_config.FILE_SERVER,
                                                      app_config.PROJECT_SLUG))
 
