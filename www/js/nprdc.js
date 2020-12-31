@@ -3,7 +3,8 @@ var nprdc = (function () {
         if (typeof $ !== 'undefined' && typeof $.getScript === 'function') {
 
             // Extract note_id and slug from url
-            var re = /https:\/\/www.documentcloud.org\/documents\/(.*?)\.html#.*\/a(\d+)/;
+
+            var re = /https:\/\/beta.documentcloud.org\/documents\/(.*?)#document\/p1\/a(\d+)/;
             match = re.exec(url);
             if (match) {
                 dc_slug = match[1];
@@ -11,7 +12,8 @@ var nprdc = (function () {
             }
 
             // Compose the note javascript url
-            var note_url = 'https://www.documentcloud.org/documents/'+dc_slug+'/annotations/'+dc_note_id+'.js'
+            //https://beta.documentcloud.org/documents/20438922-general-order#document/p1/a2010483
+            var note_url = 'https://www.beta.documentcloud.org/documents/'+dc_slug+'#document/p1/a'+dc_note_id+'.js'
 
             // Simulate DocumentCloud loader script
             var loadCSS = function(url, media) {

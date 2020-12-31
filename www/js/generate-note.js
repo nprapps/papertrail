@@ -15,7 +15,12 @@ $('#generate').click(function() {
         return;
     }
 
-    var re = /https:\/\/www.documentcloud.org\/documents\/(.*?)\.html#.*\/a(\d+)/;
+    //https://beta.documentcloud.org/documents/6940313-General-Order#document/p1/a2010479
+
+    // https://www.documentcloud.org/documents/2708497-Angelos-Clemency-Final.html#annotation/a276751
+
+    // /https:\/\/www.documentcloud.org\/documents\/(.*?)\.html#.*\/a(\d+)/;
+    var re = /https:\/\/beta.documentcloud.org\/documents\/(.*?)#document\/p1\/a(\d+)/;
     match = re.exec(url);
 
     if (match) {
@@ -28,7 +33,6 @@ $('#generate').click(function() {
 
     // Generate Published URL to update DocumentCloud
     published_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + dc_slug;
-    console.log(published_url);
     $('input[name="pulbished-url"]').val(published_url);
 
     // Generate seamus HTML embed code

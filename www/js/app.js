@@ -106,7 +106,7 @@ $(function() {
         sidebar = false;
     }
 
-    viewer = DV.load('https://www.documentcloud.org/documents/' + slug
+    viewer = DV.load('https://beta.documentcloud.org/documents/' + slug
 + '.js', {
         width: width,
         height: height,
