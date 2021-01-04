@@ -15,19 +15,20 @@ $('#generate').click(function() {
         return;
     }
 
-    //https://beta.documentcloud.org/documents/6940313-General-Order#document/p1/a2010479
-
-    // https://www.documentcloud.org/documents/2708497-Angelos-Clemency-Final.html#annotation/a276751
-
-    // /https:\/\/www.documentcloud.org\/documents\/(.*?)\.html#.*\/a(\d+)/;
     var re = /https:\/\/beta.documentcloud.org\/documents\/(.*?)#document\/p1\/a(\d+)/;
-    match = re.exec(url);
+    var match = re.exec(url);
+
+    var oldRe = /https:\/\/www.documentcloud.org\/documents\/(.*?)\.html#.*\/a(\d+)/;
+    var oldMatch = oldRe.exec(url);
 
     if (match) {
         dc_slug = match[1];
         dc_note_id = match[2];
     }
-    else {
+    else if (oldMatch){
+        dc_slug = oldMatch[1];
+        dc_note_id = oldMatch[2];
+    } else {
         alert('This does appear to be a valid DocumentCloud Note URL.');
     }
 
