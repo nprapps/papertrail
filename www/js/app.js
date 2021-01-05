@@ -17,7 +17,6 @@ function htmlDecode(input) {
 }
 
 function onDocumentLoad(viewer) {
-
     var title = htmlDecode(viewer.api.getTitle());
     var page_title = title + ' - Document Viewer : NPR';
     var related_url = viewer.api.getRelatedArticle();
@@ -106,7 +105,7 @@ $(function() {
         sidebar = false;
     }
 
-    viewer = DV.load('https://beta.documentcloud.org/documents/' + slug
+    viewer = DV.load('https://www.documentcloud.org/documents/' + slug
 + '.js', {
         width: width,
         height: height,
