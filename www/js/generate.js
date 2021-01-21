@@ -9,6 +9,9 @@ $('.example').click(function() {
 $('#generate').click(function() {
     var url = $('input[name="doc-url"]').val();
 
+    var re = /https:\/\/beta.documentcloud.org\/documents\/.*/;
+    var isBeta = !!re.exec(url);
+
     if (url == '') {
         alert('Please paste in a DocumentCloud URL.');
         return;
@@ -23,8 +26,11 @@ $('#generate').click(function() {
         return;
     }
 
-    fullscreen_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + slug;
-    embed_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?embed=true&id=' + slug;
+    fullscreen_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + slug + '&beta=' + isBeta;
+    embed_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?embed=true&id=' + slug + '&beta=' + isBeta;
+
+    // Remove before deploying
+    embed_url = 'http://localhost:8000/document.html?embed=true&id=' + slug + '&beta=' + isBeta;
 
     var iframe = JST.embed({ url: embed_url });
 
