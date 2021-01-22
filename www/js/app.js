@@ -165,8 +165,8 @@ $(function () {
     // handle beta here
     if (beta) {
         $.get("https://api.beta.documentcloud.org/api/documents/" + match[0], function (data) {
-            var src = "https://embed.documentcloud.org/documents/" + slug + "/?amp;title=1";
-            if (sidebar) src += "&amp;sidebar=1";
+            var src = "https://embed.documentcloud.org/documents/" + slug + "/?title=1";
+            if (sidebar) src += "&sidebar=1";
             if (embed) src += "&embed=1";
             $("#document").attr("src", src);
 
