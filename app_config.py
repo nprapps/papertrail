@@ -17,6 +17,7 @@ PROJECT_NAME = 'Document Viewer'
 # Project name in urls
 # Use dashes, not underscores!
 PROJECT_SLUG = 'documents'
+PROJECT_SLUG_STAGING = 'documents_staging'
 
 # The name of the repository containing the source
 REPOSITORY_NAME = 'papertrail'
@@ -31,6 +32,7 @@ DEPLOYMENT
 """
 FILE_SERVER = '10.36.1.8'
 S3_BUCKET = 'apps.npr.org'
+S3_BUCKET_STAGING = 'stage-apps.npr.org'
 DEFAULT_MAX_AGE = 20
 
 # These variables will be set at runtime. See configure_targets() below

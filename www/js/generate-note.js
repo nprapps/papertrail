@@ -35,7 +35,7 @@ $('#generate').click(function() {
     published_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + dc_slug;
 
     // Remove me before deploying
-    published_url = 'http://localhost:8000/document.html?id=' + dc_slug;
+    // published_url = 'http://localhost:8000/document.html?id=' + dc_slug;
 
     if (match) published_url += '&beta=true'
 

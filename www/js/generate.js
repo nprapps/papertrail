@@ -30,7 +30,7 @@ $('#generate').click(function() {
     embed_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?embed=true&id=' + slug + '&beta=' + isBeta;
 
     // Remove before deploying
-    embed_url = 'http://localhost:8000/document.html?embed=true&id=' + slug + '&beta=' + isBeta;
+    // embed_url = 'http://localhost:8000/document.html?embed=true&id=' + slug + '&beta=' + isBeta;
 
     var iframe = JST.embed({ url: embed_url });
 
