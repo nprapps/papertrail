@@ -31,7 +31,7 @@ function onDocumentLoad(viewer) {
         slug;
 
     $("header h1").text(title);
-
+    
     if (related_url && !embed) {
         $("header h2 a").attr({ href: viewer.api.getRelatedArticle() });
         $("header h2").show();
@@ -63,10 +63,13 @@ function onBetaDocumentLoad(result) {
         APP_CONFIG.S3_BUCKET +
         "/" +
         APP_CONFIG.PROJECT_SLUG +
-        "/document.html?id=" +
+        "/document.html?beta=true&id=" +
         slug;
 
     $("header h1").text(title);
+    if (embed) {
+        $("header").remove();
+    }
 
     if (related_url && !embed) {
         $("header h2 a").attr({ href: related_url });
@@ -170,7 +173,7 @@ $(function () {
             if (embed) src += "&embed=1";
             $("#document").attr("src", src);
 
-            onBetaDocumentLoad(data)
+            onBetaDocumentLoad(data);
         });
         
     } else {
