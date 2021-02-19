@@ -31,7 +31,7 @@ function onDocumentLoad(viewer) {
         slug;
 
     $("header h1").text(title);
-    
+
     if (related_url && !embed) {
         $("header h2 a").attr({ href: viewer.api.getRelatedArticle() });
         $("header h2").show();
@@ -55,9 +55,13 @@ function onDocumentLoad(viewer) {
 }
 
 function onBetaDocumentLoad(result) {
-    var title = result.title;
-    var page_title = title + " - Document Viewer : NPR";
-    var related_url = result.related_article;
+    if (result) {
+        var title = result.title;
+        var page_title = title + " - Document Viewer : NPR";
+        var related_url = result.related_article;
+        $("header h1").text(title);
+        document.title = page_title;
+    }
     var fullscreen_url =
         "https://" +
         APP_CONFIG.S3_BUCKET +
@@ -66,8 +70,7 @@ function onBetaDocumentLoad(result) {
         "/document.html?beta=true&id=" +
         slug;
 
-    $("header h1").text(title);
-    if (embed) {
+    if (embed || !result) {
         $("header").remove();
     }
 
@@ -80,13 +83,11 @@ function onBetaDocumentLoad(result) {
 
     var context = $.extend(APP_CONFIG, {
         url: fullscreen_url,
-        text: "Document: " + title,
-        title: page_title,
+        text: title ? "Document: " + title : "DocumentCloud Document",
+        title: page_title || '' ,
     });
 
     $(".social-links").html(JST.share(context));
-
-    document.title = page_title;
 }
 
 function setupGoogleAnalytics() {
@@ -167,15 +168,19 @@ $(function () {
 
     // handle beta here
     if (beta) {
-        $.get("https://api.beta.documentcloud.org/api/documents/" + match[0], function (data) {
-            var src = "https://embed.documentcloud.org/documents/" + slug + "/?title=1";
-            if (sidebar) src += "&sidebar=1";
-            if (embed) src += "&embed=1";
-            $("#document").attr("src", src);
+        var src =
+            "https://embed.documentcloud.org/documents/" + slug + "/?title=1";
+        if (sidebar) src += "&sidebar=1";
+        if (embed) src += "&embed=1";
+        $("#document").attr("src", src);
 
-            onBetaDocumentLoad(data);
-        });
-        
+        $.get("https://api.beta.documentcloud.org/api/documents/" + match[0])
+            .success(function (data) {
+                onBetaDocumentLoad(data);
+            })
+            .error(function (data) {
+                onBetaDocumentLoad(null);
+            });
     } else {
         viewer = DV.load(
             "https://www.documentcloud.org/documents/" + slug + ".js",

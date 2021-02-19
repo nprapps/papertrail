@@ -22,10 +22,9 @@ $('#generate').click(function() {
     slug = slug.substring(0, slug.length - 5);
 
     if (bits.length < 2 || !slug) {
-        alert('This does appear to be a valid DocumentCloud URL.');
+        alert('This not does appear to be a valid DocumentCloud URL.');
         return;
     }
-
 
     fullscreen_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + slug + '&beta=' + isBeta;
     embed_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?embed=true&id=' + slug + '&beta=' + isBeta;
