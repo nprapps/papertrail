@@ -15,15 +15,15 @@ $('#generate').click(function() {
         return;
     }
 
-    var re = /https:\/\/beta.documentcloud.org\/documents\/(.*?)#document\/p\d+\/a(\d+)/;
+    var re = /https:\/\/(beta||www).documentcloud.org\/documents\/(.*?)#document\/p\d+\/a(\d+)/;
     var match = re.exec(url);
 
     var oldRe = /https:\/\/www.documentcloud.org\/documents\/(.*?)\.html#.*\/a(\d+)/;
     var oldMatch = oldRe.exec(url);
 
     if (match) {
-        dc_slug = match[1];
-        dc_note_id = match[2];
+        dc_slug = match[2];
+        dc_note_id = match[3];
     } else if (oldMatch){
         dc_slug = oldMatch[1];
         dc_note_id = oldMatch[2];
@@ -34,6 +34,7 @@ $('#generate').click(function() {
     // Generate Published URL to update DocumentCloud
     published_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + dc_slug;
 
+    published_url ='http://localhost:8000/document.html?id=' + dc_slug;
     if (match) published_url += '&beta=true'
 
     $('input[name="pulbished-url"]').val(published_url);

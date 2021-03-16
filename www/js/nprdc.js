@@ -2,7 +2,7 @@ var nprdc = (function () {
     function embedNote(url, container) {
         if (typeof $ !== "undefined" && typeof $.getScript === "function") {
             // Extract note_id and slug from url
-            var re = /https:\/\/beta.documentcloud.org\/documents\/(.*?)#document\/p(\d+)\/a(\d+)/;
+            var re = /https:\/\/(beta||www).documentcloud.org\/documents\/(.*?)#document\/p(\d+)\/a(\d+)/;
             var match = re.exec(url);
 
             var oldRe = /https:\/\/www.documentcloud.org\/documents\/(.*?)\.html#.*\/a(\d+)/;
@@ -10,9 +10,9 @@ var nprdc = (function () {
 
             // Compose the note javascript url
             if (match) {
-                dc_slug = match[1];
-                dc_note_id = match[3];
-                dc_pnum = match[2];
+                dc_slug = match[2];
+                dc_note_id = match[4];
+                dc_pnum = match[3];
             } else if (oldMatch) {
                 dc_slug = oldMatch[1];
                 dc_note_id = oldMatch[2];
@@ -85,7 +85,6 @@ var nprdc = (function () {
                         "https://beta.documentcloud.org/notes/loader.js"
                     ).done(function () {
                         $(function () {
-                            console.log(note_url)
                             dc.embed.loadNote(note_url);
                         });
                     });

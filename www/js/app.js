@@ -18,43 +18,7 @@ function htmlDecode(input) {
     return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
 }
 
-function onDocumentLoad(viewer) {
-    var title = htmlDecode(viewer.api.getTitle());
-    var page_title = title + " - Document Viewer : NPR";
-    var related_url = viewer.api.getRelatedArticle();
-    var fullscreen_url =
-        "https://" +
-        APP_CONFIG.S3_BUCKET +
-        "/" +
-        APP_CONFIG.PROJECT_SLUG +
-        "/document.html?id=" +
-        slug;
-
-    $("header h1").text(title);
-
-    if (related_url && !embed) {
-        $("header h2 a").attr({ href: viewer.api.getRelatedArticle() });
-        $("header h2").show();
-    }
-
-    $("#fullscreen-link a").attr({ href: fullscreen_url });
-
-    var context = $.extend(APP_CONFIG, {
-        url: fullscreen_url,
-        text: "Document: " + title,
-        title: page_title,
-    });
-
-    $(".social-links").html(JST.share(context));
-
-    document.title = page_title;
-
-    if (window.innerWidth <= 480) {
-        $(".DV-collapsibleControls").hide();
-    }
-}
-
-function onBetaDocumentLoad(result) {
+function onDocumentLoad(result) {
     if (result) {
         var title = result.title;
         var page_title = title + " - Document Viewer : NPR";
@@ -67,7 +31,7 @@ function onBetaDocumentLoad(result) {
         APP_CONFIG.S3_BUCKET +
         "/" +
         APP_CONFIG.PROJECT_SLUG +
-        "/document.html?beta=true&id=" +
+        "/document.html?id=" +
         slug;
 
     if (embed || !result) {
@@ -84,7 +48,7 @@ function onBetaDocumentLoad(result) {
     var context = $.extend(APP_CONFIG, {
         url: fullscreen_url,
         text: title ? "Document: " + title : "DocumentCloud Document",
-        title: page_title || '' ,
+        title: page_title || "",
     });
 
     $(".social-links").html(JST.share(context));
@@ -140,7 +104,6 @@ function setupChartbeat() {
 
 $(function () {
     slug = getParameterByName("id");
-    beta = getParameterByName("beta") == "true";
 
     var re = /.+(\d+)/;
     var match = re.exec(slug);
@@ -166,31 +129,17 @@ $(function () {
         sidebar = false;
     }
 
-    // handle beta here
-    if (beta) {
-        var src =
-            "https://embed.documentcloud.org/documents/" + slug + "/?title=1";
-        if (sidebar) src += "&sidebar=1";
-        if (embed) src += "&embed=1";
-        $("#document").attr("src", src);
+    var src = "https://embed.documentcloud.org/documents/" + slug + "/?title=1";
+    console.log(src)
+    if (sidebar) src += "&sidebar=1";
+    if (embed) src += "&embed=1";
+    $("#document").attr("src", src);
 
-        $.get("https://api.beta.documentcloud.org/api/documents/" + match[0])
-            .success(function (data) {
-                onBetaDocumentLoad(data);
-            })
-            .error(function (data) {
-                onBetaDocumentLoad(null);
-            });
-    } else {
-        viewer = DV.load(
-            "https://www.documentcloud.org/documents/" + slug + ".js",
-            {
-                width: width,
-                height: height,
-                sidebar: sidebar,
-                container: "#DV-viewer",
-                afterLoad: onDocumentLoad,
-            }
-        );
-    }
+    $.get("https://api.beta.documentcloud.org/api/documents/" + match[0])
+        .success(function (data) {
+            onDocumentLoad(data);
+        })
+        .error(function (data) {
+            onDocumentLoad(null);
+        });
 });
