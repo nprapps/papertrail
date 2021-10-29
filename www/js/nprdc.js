@@ -55,7 +55,7 @@ var nprdc = (function () {
                 @*/
             }
             $(".DC-embed-label").attr("for", "DC-note-example");
-                $(".DC-embed.DC-embed-note").attr("id", "DC-note-example");
+            $(".DC-embed.DC-embed-note").attr("id", "DC-note-example");
 
             if (
                 !match &&

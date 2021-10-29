@@ -130,7 +130,6 @@ $(function () {
     }
 
     var src = "https://embed.documentcloud.org/documents/" + slug + "/?title=1";
-    console.log(src)
     if (sidebar) src += "&sidebar=1";
     if (embed) src += "&embed=1";
     $("#document").attr("src", src);
