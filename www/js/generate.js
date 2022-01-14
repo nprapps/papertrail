@@ -27,6 +27,7 @@ $('#generate').click(function() {
 
     fullscreen_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + slug;
     embed_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?embed=true&id=' + slug;
+    // embed_url = 'http://localhost:8000/document.html?embed=true&id=' + slug;
 
     var iframe = JST.embed({ url: embed_url });
 
@@ -37,4 +38,3 @@ $('#generate').click(function() {
 
     $('#iframe-example').html(iframe);
 });
-
