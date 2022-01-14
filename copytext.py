@@ -3,7 +3,7 @@
 from flask import Markup
 import xlrd
 
-COPY_XLS = 'data/copy.xls'
+COPY_XLS = 'data/copy.xlsx'
 
 class CopyException(Exception):
     pass

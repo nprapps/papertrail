@@ -40,9 +40,10 @@ def download_copy():
     """
     Downloads a Google Doc as an .xls file.
     """
-    base_url = 'https://docs.google.com/spreadsheets/d/%s/pub?output=xls'
+
+    base_url = 'https://docs.google.com/spreadsheets/export?format=xlsx&id=%s'
     doc_url = base_url % app_config.COPY_GOOGLE_DOC_KEY
-    local('curl -o data/copy.xls "%s"' % doc_url)
+    local('curl -L -o data/copy.xlsx "%s"' % doc_url)
 
 
 def update_copy():
@@ -149,10 +150,10 @@ def prep_bool_arg(arg):
     return bool(strtobool(str(arg)))
 
 
-def deploy_to_file_server(path='www'):
+def deploy_to_file_server(path, server, slug):
     local('rsync -vr %s/ visadmin@%s:~/www/%s' % (path,
-                                                     app_config.FILE_SERVER,
-                                                     app_config.PROJECT_SLUG))
+                                                     server,
+                                                     slug))
 
 
 def _gzip(in_path='www', out_path='.gzip'):
@@ -171,12 +172,12 @@ def deploy(remote='origin'):
     local('rm -rf %s/live-data' % 'www')
     local('rm -rf %s/sitemap.xml' % 'www')
 
-    deploy_to_file_server('www')
+    deploy_to_file_server('www', app_config.FILE_SERVER, app_config.PROJECT_SLUG)
     _gzip('www', '.gzip')
     # Sync gzip files
-    awscli_sync('.gzip', gzip=True)
+    awscli_sync('.gzip', True, False, app_config.S3_BUCKET, app_config.PROJECT_SLUG)
     # Sync other files
-    awscli_sync('www', gzip=False)
+    awscli_sync('www', False, False, app_config.S3_BUCKET, app_config.PROJECT_SLUG)
 
     # HACK: Don't allow index.html on public site
     local('aws s3 rm s3://%s/%s/index.html' % (app_config.S3_BUCKET,
@@ -185,8 +186,34 @@ def deploy(remote='origin'):
     local('aws s3 rm s3://%s/%s/notes/index.html' % (app_config.S3_BUCKET,
                                                      app_config.PROJECT_SLUG))
 
+def deploy_staging(remote='origin'):
+    """
+    Deploy the latest app to S3 and, if configured, to our servers.
+    """
+    app_config.PROJECT_SLUG = app_config.PROJECT_SLUG_STAGING
+    app_config.S3_BUCKET = app_config.S3_BUCKET_STAGING
 
-def awscli_sync(path='www', gzip=False, dryrun=False):
+    render()
+
+    # Clear files that should never be deployed
+    local('rm -rf %s/live-data' % 'www')
+    local('rm -rf %s/sitemap.xml' % 'www')
+
+    deploy_to_file_server('www', app_config.FILE_SERVER, app_config.PROJECT_SLUG_STAGING)
+    _gzip('www', '.gzip')
+    # Sync gzip files
+    awscli_sync('.gzip', True, False, app_config.S3_BUCKET_STAGING, app_config.PROJECT_SLUG_STAGING)
+    # Sync other files
+    awscli_sync('www', False, False, app_config.S3_BUCKET_STAGING, app_config.PROJECT_SLUG_STAGING)
+
+    # HACK: Don't allow index.html on public site
+    local('aws s3 rm s3://%s/%s/index.html' % (app_config.S3_BUCKET_STAGING,
+                                               app_config.PROJECT_SLUG_STAGING))
+    # HACK: Don't allow notes/index.html on public site
+    local('aws s3 rm s3://%s/%s/notes/index.html' % (app_config.S3_BUCKET_STAGING,
+                                                     app_config.PROJECT_SLUG_STAGING))
+
+def awscli_sync(path, gzip, dryrun, bucket, slug):
     """
     sync folder to s3 bucket
     """
@@ -195,8 +222,8 @@ def awscli_sync(path='www', gzip=False, dryrun=False):
     GZIP_FILE_TYPES = ['*.html', '*.js', '*.json', '*.css', '*.xml']
     command = 'aws s3 sync %s s3://%s/%s --acl="public-read"' % (
         path,
-        app_config.S3_BUCKET,
-        app_config.PROJECT_SLUG)
+        bucket,
+        slug)
     # add cache control header
     command += ' --cache-control "max-age=%i"' % (app_config.DEFAULT_MAX_AGE)
     if dryrun:

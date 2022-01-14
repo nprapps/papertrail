@@ -15,20 +15,27 @@ $('#generate').click(function() {
         return;
     }
 
-    var re = /https:\/\/www.documentcloud.org\/documents\/(.*?)\.html#.*\/a(\d+)/;
-    match = re.exec(url);
+    var re = /https:\/\/(beta||www).documentcloud.org\/documents\/(.*?)#document\/p\d+\/a(\d+)/;
+    var match = re.exec(url);
+
+    var oldRe = /https:\/\/www.documentcloud.org\/documents\/(.*?)\.html#.*\/a(\d+)/;
+    var oldMatch = oldRe.exec(url);
 
     if (match) {
-        dc_slug = match[1];
-        dc_note_id = match[2];
-    }
-    else {
+        dc_slug = match[2];
+        dc_note_id = match[3];
+    } else if (oldMatch){
+        dc_slug = oldMatch[1];
+        dc_note_id = oldMatch[2];
+    } else {
         alert('This does appear to be a valid DocumentCloud Note URL.');
     }
 
     // Generate Published URL to update DocumentCloud
     published_url = 'https://' + APP_CONFIG.S3_BUCKET + '/' + APP_CONFIG.PROJECT_SLUG + '/document.html?id=' + dc_slug;
-    console.log(published_url);
+
+    if (match) published_url += '&beta=true'
+
     $('input[name="pulbished-url"]').val(published_url);
 
     // Generate seamus HTML embed code
